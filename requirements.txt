@@ -1,2 +1,5 @@
 flask
+geopy
+mysql-connector-python
 requests
+
