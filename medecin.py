@@ -2,6 +2,9 @@ from flask import Flask, request, jsonify
 from geopy.distance import geodesic
 import mysql.connector
 import requests
+import os
+
+port = int(os.environ.get("PORT", 5000))
 
 app = Flask(__name__)
 
@@ -97,5 +100,5 @@ def getDocsFromDB():
     return jsonify({"message" : msg}) 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=port)
 
