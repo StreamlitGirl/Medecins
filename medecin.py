@@ -48,8 +48,8 @@ def getDocsFromDB():
         connection = mysql.connector.connect(
             host="mysql.railway.internal",
             user="root",
-            password="WxMcKJBKaOyynAhtzjCwccIpQcJXuvGE
-",
+            password = "WxMcKJBKaOyynAhtzjCwccIpQcJXuvGE",
+
             database="railway"
         )
 
