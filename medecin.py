@@ -37,15 +37,15 @@ def NearDoctor(listDocs: list):
 def listDoctors():
     listDocs: list = []
     try:
-       db_config = {
+      connection = mysql.connector.connect({
     'host': 'mysql.railway.internal',
     'user': 'root',
     'password': 'WxMcKJBKaOyynAhtzjCwccIpQcJXuvGE',
     'database': 'railway',
     'port' : 3306
-}
+} )
         
-        connection = mysql.connector.connect(**db_config)
+      
         if connection.is_connected():
             page = int(request.args.get('page', 1))
             limit = 5
