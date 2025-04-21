@@ -44,6 +44,8 @@ def listDoctors():
     'database': 'railway',
     'port' : 3306
 }
+        db_config = mysql.connector.connect(**db_config)
+
 
         
 
