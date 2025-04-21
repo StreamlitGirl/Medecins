@@ -54,11 +54,11 @@ def listDoctors():
             sql = f"SELECT * FROM docteur LIMIT {limit} OFFSET {offset}"
 
             if sql:
-                cursor = connection.cursor()
+                cursor = db_config.cursor()
                 cursor.execute(sql)
                 listDocs = cursor.fetchall()
         else: 
-            return {"success" : False, "msg" : "Erreure de connection a la base de données"}
+            return {"success" : False, "msg" : "Erreure de db_config a la base de données"}
     except Exception as e:
         return {"success" : False, "msg" : str(e)}
     return {"success" : True , "msg" : listDocs}
