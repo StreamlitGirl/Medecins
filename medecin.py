@@ -44,19 +44,19 @@ def listDoctors():
     'database': 'railway',
     'port' : 3306
 }
-        db_config = mysql.connector.connect(**db_config)
+        connection = mysql.connector.connect(**db_config)
 
 
         
 
-        if db_config.is_connected():
+        if connection.is_connected():
             page = int(request.args.get('page', 1))
             limit = 5
             offset = (page - 1) * limit
             sql = f"SELECT * FROM docteur LIMIT {limit} OFFSET {offset}"
 
             if sql:
-                cursor = db_config.cursor()
+                cursor = connection.cursor()
                 cursor.execute(sql)
                 listDocs = cursor.fetchall()
         else: 
