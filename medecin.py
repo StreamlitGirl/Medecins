@@ -34,7 +34,34 @@ def NearDoctor(listDocs: list):
 
                 
                
+def listDoctors():
+    listDocs: list = []
+    try:
+        connection = mysql.connector.connect(
+            host="mysql.railway.internal",
+            user="root",
+            password="WxMcKJBKaOyynAhtzjCwccIpQcJXuvGE",
+            database="railway",
+            port = 3306
+        )
 
+        if connection.is_connected():
+            page = int(request.args.get('page', 1))
+            limit = 5
+            offset = (page - 1) * limit
+            sql = f"SELECT * FROM docteur LIMIT {limit} OFFSET {offset}"
+
+            if sql:
+                cursor = connection.cursor()
+                cursor.execute(sql)
+                listDocs = cursor.fetchall()
+        else: 
+            return {"success" : False, "msg" : "Erreure de connection a la base de données"}
+    except Exception as e:
+        return {"success" : False, "msg" : str(e)}
+    return {"success" : True , "msg" : listDocs}
+
+    
 
 
 # @app.route('/api/doctors', methods=['GET']) 
@@ -149,11 +176,19 @@ def fetchingAdoctor ():
 
     
         
+
+
+
+
+    
+
+    
+        
 import os
 
 
 if __name__ == "__main__":
     p = int(os.environ.get("PORT", 5000)) 
 
-    app.run(host='0.0.0.0', port=p , debug = True)
+    app.run(host='0.0.0.0', port=p )
 
