@@ -44,8 +44,6 @@ def listDoctors():
     'database': 'railway',
     'port' : 3306
 } )
-        
-      
         if connection.is_connected():
             page = int(request.args.get('page', 1))
             limit = 5
@@ -61,6 +59,9 @@ def listDoctors():
     except Exception as e:
         return {"success" : False, "msg" : str(e)}
     return {"success" : True , "msg" : listDocs}
+        
+      
+        
 
 
         
