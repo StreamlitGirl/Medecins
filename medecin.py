@@ -3,7 +3,7 @@ from geopy.distance import geodesic
 import mysql.connector
 import requests
 from fastapi import FastAPI, Query
-from deep_translator import GoogleTranslator
+
 from langdetect import detect
 from translate import Translator
 #from googletrans import Translator
