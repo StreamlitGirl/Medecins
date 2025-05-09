@@ -3,7 +3,7 @@ from geopy.distance import geodesic
 import mysql.connector
 import requests
 from fastapi import FastAPI, Query
-
+#from deep_translator import GoogleTranslator
 from langdetect import detect
 from translate import Translator
 #from googletrans import Translator
@@ -38,11 +38,10 @@ def listDoctors():
     listDocs: list = []
     try:
         connection = mysql.connector.connect(
-            host="mysql.railway.internal",
+            host="localhost",
             user="root",
-            password="WxMcKJBKaOyynAhtzjCwccIpQcJXuvGE",
-            database="railway",
-            port = 3306
+            password="istic.glsi3",
+            database="monpfe"
         )
 
         if connection.is_connected():
@@ -75,7 +74,7 @@ def AddressToPosition(address: str):
         "countrycode": "tn"  # restrict to Tunisia
     }
 
-    response = requests.get(url, params=params)
+    response = requests.get(url, params=params, verify=False)
     data = response.json()
 
     if data["results"]:
@@ -95,7 +94,7 @@ def PositionToAddress(mycurrentposition):
         "countrycode": "tn"  # restrict to Tunisia
     }
 
-    response = requests.get(url, params=params)
+    response = requests.get(url, params=params, verify=False)
     data = response.json()
 
     if data["results"]:
@@ -178,17 +177,6 @@ def fetchingAdoctor ():
         
 
 
-
-
-    
-
-    
-        
-import os
-
-
 if __name__ == "__main__":
-    p = int(os.environ.get("PORT", 5000)) 
-
-    app.run(host='0.0.0.0', port=p )
+    app.run(host='0.0.0.0', port=5100)
 
