@@ -3,7 +3,7 @@ geopy
 mysql-connector-python
 requests
 fastapi
-deep-translator
+
 langdetect
 translate
 
